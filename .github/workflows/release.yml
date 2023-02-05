@@ -19,16 +19,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@main
         with:
           fetch-depth: 0
         
       - name: Prepare Release Variables 
         id: vars
-        uses: ignite-hq/cli/actions/release/vars@develop
+        uses: ignite-hq/cli/actions/release/vars@main
 
       - name: Issue Release Assets 
-        uses: ignite-hq/cli/actions/cli@develop
+        uses: ignite-hq/cli/actions/cli@main
         if: ${{ steps.vars.outputs.should_release == 'true' }}
         with:
           args: chain build --release --release.prefix ${{ steps.vars.outputs.tarball_prefix }} -t linux:amd64 -t darwin:amd64
