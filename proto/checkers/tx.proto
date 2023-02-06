@@ -7,7 +7,17 @@ option go_package = "github.com/ra0321/checkers/x/checkers/types";
 
 // Msg defines the Msg service.
 service Msg {
-    // this line is used by starport scaffolding # proto/tx/rpc
+      rpc CreatePost(MsgCreatePost) returns (MsgCreatePostResponse);
+// this line is used by starport scaffolding # proto/tx/rpc
+}
+
+message MsgCreatePost {
+  string creator = 1;
+  string title = 2;
+  string body = 3;
+}
+
+message MsgCreatePostResponse {
 }
 
 // this line is used by starport scaffolding # proto/tx/message
